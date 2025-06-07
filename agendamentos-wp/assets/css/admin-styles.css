@@ -1,356 +1,153 @@
-/* Estilos Gerais para a página Todos os Profissionais */
-.profissionais-list-table-wrapper {
-    display: block; /* Visível por padrão em telas maiores */
+/* Estilos Gerais */
+.wrap h1, .wrap h2 {
+    color: #2c3338;
+}
+.wrap .page-title-action {
+    margin-left: 10px;
 }
 
-.profissionais-list-mobile {
-    display: none; /* Oculto por padrão */
+/* Formulários Gerais */
+.form-table th {
+    padding: 15px 10px 15px 0;
+    width: 200px; /* Alinhamento para labels */
+}
+.form-table td {
+    padding: 10px;
+}
+.form-table td input[type="text"],
+.form-table td input[type="tel"],
+.form-table td input[type="email"],
+.form-table td input[type="password"],
+.form-table td input[type="number"],
+.form-table td select,
+.form-table td textarea {
+    width: 100%;
+    max-width: 400px; /* Evita que fiquem excessivamente largos em telas grandes */
+}
+.form-table td input.small-text {
+    width: auto;
+    max-width: 100px;
+}
+.form-table td .description {
+    font-size: 0.9em;
+    color: #646970;
+}
+.form-wrap .form-field input[type="text"],
+.form-wrap .form-field input[type="tel"],
+.form-wrap .form-field input[type="email"] {
+    width: 100%;
 }
 
-.profissionais-list-mobile ul {
-    list-style: none;
-    padding: 0;
-}
 
-.profissionais-list-mobile li {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
-}
-
-.profissionais-list-mobile li strong {
-    font-weight: 600;
-}
-
-.profissionais-list-mobile li a {
-    text-decoration: none;
-    margin-right: 5px;
-}
-
-/* Ações na tabela */
-.wp-list-table .row-actions {
-    color: #777;
-    font-size: 13px;
-    padding-top: 2px;
-    position: relative;
-    left: 0; /* Reset para evitar problemas com o CSS do core */
-}
-
-.wp-list-table .column-primary .row-actions {
-    /* Ajustes para garantir visibilidade e alinhamento */
-}
-
-/* Media Query para telas menores (ex: < 768px) */
-@media screen and (max-width: 782px) { /* Ponto de quebra comum do WordPress admin */
-    .profissionais-list-table-wrapper {
-        display: none; /* Oculta a tabela em telas menores */
-    }
-
-    .profissionais-list-mobile {
-        display: block; /* Exibe a lista em telas menores */
-    }
-
-    /* Ocultar colunas desnecessárias na tabela se ela ainda estiver visível por algum motivo ou antes do JS */
-    .wp-list-table thead th:not(:first-child):not(:nth-child(2)), /* Mantém Nome e Ações (se Ações fosse a segunda) */
-    .wp-list-table tbody td:not(:first-child):not(:nth-child(2)) {
-        /* display: none; */ /* Melhor ocultar o wrapper da tabela inteira */
-    }
-
-    /* Ajustes para os botões de ação na tabela, se visíveis */
-    .wp-list-table .button-small {
-        display: inline-block;
-        margin-top: 5px;
-        margin-right: 5px;
-    }
-    .wp-list-table .delete-button {
-        color: #b32d2e !important;
-        border-color: #b32d2e !important;
-    }
-     .wp-list-table .delete-button:hover {
-        color: #fff !important;
-        background-color: #b32d2e !important;
-    }
-}
-
-/* Ocultar as ações inline da tabela quando a lista mobile estiver ativa,
-   pois a lista mobile já tem seus próprios links de ação. */
-@media screen and (max-width: 782px) {
-    .profissionais-list-table-wrapper .row-actions {
-        /* display: none; */ /* Pode ser útil se a tabela ainda for renderizada mas escondida */
-    }
+/* Estilos para a página Todos os Profissionais */
+.profissionais-list-table-wrapper { display: block; }
+.profissionais-list-mobile { display: none; }
+.profissionais-list-mobile ul { list-style: none; padding: 0; }
+.profissionais-list-mobile li { background: #fff; border: 1px solid #e5e5e5; padding: 10px 12px; margin-bottom: 8px; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+.profissionais-list-mobile li strong { font-weight: 600; }
+.wp-list-table .row-actions { color: #777; font-size: 13px; padding-top: 2px; position: relative; left: 0; }
 
 /* Estilos para os cards de horário */
-.horarios-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-}
+.horarios-cards-container { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; }
+.horario-card { border: 1px solid #ccd0d4; padding: 15px; background-color: #fff; width: calc(33.333% - 11px); /* Ajuste para gap */ box-sizing: border-box; min-width: 260px; border-radius: 4px; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+.horario-card h3 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.1em; color:#1d2327;}
+.horario-card label { display: block; margin-bottom: 5px; font-weight: normal; } /* Labels normais, não bold por padrão */
+.horario-card label input[type="checkbox"] { margin-right: 5px; }
+.horario-card input[type="time"], .horario-card input[type="number"] { margin-bottom: 10px; width: 100%; max-width: 100%; padding: 8px; box-sizing: border-box; }
+.horario-card .field-group { margin-bottom: 10px; }
+.horario-card .field-group label { font-weight: bold; } /* Labels dos campos em bold */
+.horario-card hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
 
-.horario-card {
-    border: 1px solid #ccd0d4;
-    padding: 15px;
-    background-color: #fff;
-    width: calc(33.333% - 20px); /* Três cards por linha, ajustando o gap */
-    box-sizing: border-box;
-    min-width: 280px; /* Largura mínima para melhor visualização */
-}
-
-.horario-card h3 {
-    margin-top: 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    font-size: 1.2em;
-}
-
-.horario-card label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.horario-card input[type="time"],
-.horario-card input[type="number"],
-.horario-card input[type="checkbox"] {
-    margin-bottom: 10px;
-    width: calc(100% - 10px); /* Ajuste para padding/border */
-    padding: 8px;
-    box-sizing: border-box;
-}
-.horario-card input[type="checkbox"] {
-    width: auto;
-    margin-right: 5px;
-}
-
-.horario-card .field-group {
-    margin-bottom: 10px;
-}
-.horario-card .field-group label{
-    font-weight: normal;
-}
-
-
-/* Responsividade para os cards de horário */
-@media screen and (max-width: 1200px) {
-    .horario-card {
-        width: calc(50% - 10px); /* Dois cards por linha */
-    }
-}
-
-@media screen and (max-width: 782px) { /* Mesmo breakpoint do admin WP */
-    .horario-card {
-        width: 100%; /* Um card por linha */
-        margin-bottom: 15px;
-    }
-}
 
 /* Estilos para a lista/tabela de Serviços */
-.servicos-list-table-wrapper {
-    display: block;
-}
-
-.servicos-list-mobile {
-    display: none;
-}
-
-.servicos-list-mobile ul {
-    list-style: none;
-    padding: 0;
-}
-
-.servicos-list-mobile li {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
-}
-
-.servicos-list-mobile li strong {
-    font-weight: 600;
-}
-
-.servicos-list-mobile li .servico-profissionais {
-    font-size: 0.9em;
-    color: #555;
-}
-
-
-@media screen and (max-width: 782px) {
-    .servicos-list-table-wrapper {
-        display: none;
-    }
-
-    .servicos-list-mobile {
-        display: block;
-    }
-}
+.servicos-list-table-wrapper { display: block; }
+.servicos-list-mobile { display: none; }
+.servicos-list-mobile ul { list-style: none; padding: 0; }
+.servicos-list-mobile li { background: #fff; border: 1px solid #e5e5e5; padding: 10px 12px; margin-bottom: 8px; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+.servicos-list-mobile li strong { font-weight: 600; }
+.servicos-list-mobile li .servico-profissionais { font-size: 0.9em; color: #555; margin-top: 5px; }
 
 /* Estilos para a página de Visualizar Agendamentos */
-.agendamentos-filters {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #ccd0d4;
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
-}
-.agendamentos-filters .filter-item {
-    display: inline-block;
-    margin-right: 15px;
-    margin-bottom: 10px; /* Para quebra de linha em telas menores */
-}
-.agendamentos-filters .filter-item label {
-    margin-right: 5px;
-}
+.agendamentos-filters { margin-bottom: 20px; padding: 15px; background-color: #fff; border: 1px solid #ccd0d4; box-shadow: 0 1px 1px rgba(0,0,0,.04); display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end; }
+.agendamentos-filters .filter-item { display: flex; flex-direction: column; }
+.agendamentos-filters .filter-item label { margin-bottom: 5px; font-weight: bold; }
+.agendamentos-filters .filter-item select, .agendamentos-filters .filter-item input[type="date"] { margin-right: 10px; padding: 8px; }
+.agendamentos-filters .button { align-self: flex-end; }
 
-.agendamentos-list-table-wrapper {
-    display: block;
-}
-.agendamentos-list-mobile {
-    display: none;
-}
-.agendamentos-list-mobile ul {
-    list-style: none;
-    padding: 0;
-}
-.agendamentos-list-mobile li {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
-}
-.agendamentos-list-mobile li strong {
-    font-weight: 600;
-}
-.agendamentos-list-mobile li .agendamento-details {
-    font-size: 0.9em;
-    color: #555;
-}
+.agendamentos-list-table-wrapper { display: block; }
+.agendamentos-list-mobile { display: none; }
+.agendamentos-list-mobile ul { list-style: none; padding: 0; }
+.agendamentos-list-mobile li { background: #fff; border: 1px solid #e5e5e5; padding: 10px 12px; margin-bottom: 8px; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+.agendamentos-list-mobile li strong { font-weight: 600; }
+.agendamentos-list-mobile li .agendamento-details { font-size: 0.9em; color: #555; margin-top: 5px; }
 
-/* Badges de Status */
-.status-badge {
-    display: inline-block;
-    padding: 3px 8px;
-    font-size: 0.85em;
-    font-weight: 600;
-    border-radius: 3px;
-    color: #fff;
-    text-transform: capitalize;
-}
-.status-pendente { background-color: #ffb900; /* Amarelo */ }
-.status-confirmado { background-color: #46b450; /* Verde */ }
-.status-cancelado { background-color: #dc3232; /* Vermelho */ }
-.status-concluido { background-color: #0073aa; /* Azul */ }
+.status-badge { display: inline-block; padding: 4px 8px; font-size: 0.9em; font-weight: 600; border-radius: 4px; color: #fff; text-transform: capitalize; line-height: 1.2; }
+.status-pendente { background-color: #ffb900; }
+.status-confirmado { background-color: #46b450; }
+.status-cancelado { background-color: #dc3232; }
+.status-concluido { background-color: #0073aa; }
 
-
-@media screen and (max-width: 782px) {
-    .agendamentos-list-table-wrapper {
-        display: none;
-    }
-    .agendamentos-list-mobile {
-        display: block;
-    }
-    .agendamentos-filters .filter-item {
-        display: block; /* Empilha os filtros */
-        margin-right: 0;
-    }
-    .agendamentos-filters .filter-item select,
-    .agendamentos-filters .filter-item input[type="date"],
-    .agendamentos-filters .filter-item input[type="submit"] {
-        width: 100%;
-        margin-top: 5px;
-    }
-}
+/* Estilos para o Dashboard (Admin e Profissional) */
+.agendamentos-dashboard .agendamentos-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+.agendamentos-dashboard .dashboard-card { background-color: #fff; border: 1px solid #ccd0d4; box-shadow: 0 1px 1px rgba(0,0,0,.04); padding: 20px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.agendamentos-dashboard .dashboard-card h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.1em; color: #1d2327; }
+.agendamentos-dashboard .dashboard-card .dashboard-metric { font-size: 2em; font-weight: bold; color: #0073aa; margin-top: 5px; margin-bottom: 15px; }
+.agendamentos-dashboard .dashboard-card .dashicons { font-size: 2.5em; width: auto; height: auto; color: #0073aa; margin-bottom: 10px; }
+.agendamentos-dashboard .dashboard-card-placeholder { opacity: 0.7; }
+.agendamentos-dashboard .dashboard-card-placeholder .dashboard-metric { font-size: 1.2em; color: #777; }
 
 /* Estilos para a página de Clientes (formulário e lista) */
-#col-container {
-    margin-top: 20px;
+#col-container { margin-top: 20px; }
+#col-left { float: left; width: 35%; padding-right: 20px; box-sizing: border-box; }
+#col-right { float: left; width: 65%; padding-left: 20px; box-sizing: border-box; }
+.form-wrap .form-field { margin-bottom: 10px; }
+.form-wrap label { display: block; margin-bottom: 3px; }
+.form-wrap input[type="text"], .form-wrap input[type="tel"], .form-wrap input[type="email"] { width: 100%; padding: 8px; }
+.form-wrap p { font-size: 0.9em; color: #646970; margin-top: 3px; }
+
+.clientes-list-table-wrapper { display: block; }
+.clientes-list-mobile { display: none; }
+.clientes-list-mobile ul { list-style: none; padding: 0; }
+.clientes-list-mobile li { background: #fff; border: 1px solid #e5e5e5; padding: 10px 12px; margin-bottom: 8px; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+.clientes-list-mobile li strong { font-weight: 600; }
+
+/* Estilos para a página de Perfil do Profissional */
+.agendamentos-perfil-form .form-table th {
+    width: 220px;
 }
 
-#col-left {
-    float: left;
-    width: 300px; /* Largura para o formulário */
-    padding-right: 20px;
-    box-sizing: border-box;
-}
-
-#col-right {
-    float: left;
-    width: calc(100% - 300px); /* Largura para a lista */
-    padding-left: 20px;
-    box-sizing: border-box;
-}
-
+/* Responsividade Geral */
 @media screen and (max-width: 782px) {
-    #col-left,
-    #col-right {
-        float: none;
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    #col-left {
-        margin-bottom: 20px;
-    }
-}
-
-.form-wrap .form-field {
-    margin-bottom: 10px;
-}
-.form-wrap label {
-    display: block;
-    margin-bottom: 3px;
-}
-.form-wrap input[type="text"],
-.form-wrap input[type="tel"],
-.form-wrap input[type="email"] {
-    width: 100%;
-    padding: 8px;
-}
-.form-wrap p {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 3px;
-}
-
-
-/* Estilos para a lista/tabela de Clientes */
-.clientes-list-table-wrapper {
-    display: block;
-}
-
-.clientes-list-mobile {
-    display: none;
-}
-
-.clientes-list-mobile ul {
-    list-style: none;
-    padding: 0;
-}
-
-.clientes-list-mobile li {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.04);
-}
-
-.clientes-list-mobile li strong {
-    font-weight: 600;
-}
-
-
-@media screen and (max-width: 782px) {
-    .clientes-list-table-wrapper {
-        display: none;
-    }
-
-    .clientes-list-mobile {
+    .form-table th, .form-table td {
+        padding: 10px 5px;
         display: block;
+        width: 100% !important; /* Faz com que th e td ocupem a largura total */
     }
+    .form-table th {
+        padding-bottom: 0;
+    }
+    .form-table td input[type="text"],
+    .form-table td input[type="tel"],
+    .form-table td input[type="email"],
+    .form-table td input[type="password"],
+    .form-table td input[type="number"],
+    .form-table td select,
+    .form-table td textarea {
+        max-width: none; /* Remove a restrição de max-width em telas menores */
+    }
+    .agendamentos-filters .filter-item { display: block; margin-right: 0; width: 100%; }
+    .agendamentos-filters .filter-item select, .agendamentos-filters .filter-item input[type="date"], .agendamentos-filters .filter-item input[type="submit"], .agendamentos-filters .button { width: 100%; margin-top: 5px; margin-right: 0; }
+
+    #col-left, #col-right { float: none; width: 100%; padding-left: 0; padding-right: 0; }
+    #col-left { margin-bottom: 20px; }
+
+    .profissionais-list-table-wrapper, .servicos-list-table-wrapper, .clientes-list-table-wrapper, .agendamentos-list-table-wrapper { display: none; }
+    .profissionais-list-mobile, .servicos-list-mobile, .clientes-list-mobile, .agendamentos-list-mobile { display: block; }
+
+    .horario-card { width: calc(50% - 8px); } /* Dois cards por linha em telas menores */
 }
+
+@media screen and (max-width: 600px) {
+    .horario-card { width: 100%; margin-bottom: 15px; } /* Um card por linha */
+    .agendamentos-dashboard .agendamentos-dashboard-grid { grid-template-columns: 1fr; } /* Um card por linha no dashboard */
 }
